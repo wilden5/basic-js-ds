@@ -1,4 +1,4 @@
-const { NotImplementedError } = require('../extensions/index.js');
+const { NotImplementedError } = require('../lib');
 
 const { ListNode } = require('../extensions/list-node.js');
 
@@ -25,7 +25,7 @@ class Queue {
   }
 
   enqueue( value ) {
-    const node = new ListNode(value); // new node that we wanna add / next is null by default
+    const node = { value: value, next: null };
 
     if (this.tail) {
       this.tail.next = node;
@@ -40,7 +40,7 @@ class Queue {
 
   dequeue() {
     if (!this.head) {
-      return null;
+      return undefined;
     }
 
     const dequeueValue = this.head.value; // only for return we need that
